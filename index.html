@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Squeak Smalltalk on the Web</title>
+    <style>
+        /* Centers the Squeak canvas cleanly on your web page */
+        body {
+            margin: 0;
+            background-color: #202020;
+            color: #ffffff;
+            font-family: sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        h1 {
+            margin-bottom: 10px;
+        }
+        #squeakCanvas {
+            background-color: #000000;
+            border: 2px solid #444444;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>My Squeak Project</h1>
+    
+    <!-- This is the screen canvas where your Smalltalk image will render -->
+    <canvas id="squeakCanvas" width="1024" height="768"></canvas>
+
+    <!-- Load the official SqueakJS library from the web -->
+    <script src="https://js.org"></script>
+
+    <script>
+        window.onload = function() {
+            var canvas = document.getElementById('squeakCanvas');
+            
+            // TODO: REPLACE THIS URL with your actual GitHub Pages .image link
+            var imageUrl = "https://github.io";
+
+            console.log("Launching SqueakJS with image:", imageUrl);
+
+            // Starts the virtual machine using the canvas element
+            SqueakJS.runSqueak(imageUrl, canvas, {
+                fullscreen: false,
+                displayProgress: true
+            });
+        };
+    </script>
+
+</body>
+</html>
